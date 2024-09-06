@@ -1,6 +1,7 @@
 package gui.admin;
 
 
+import gui.activity.ManageActivity;
 import gui.booking.BookingForLocal;
 import gui.booking.BookingPanel;
 import gui.booking.BookingPanel2;
@@ -403,7 +404,17 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
+        ManageActivity ma = new ManageActivity();
+        ma.setVisible(true);
+        jPanel4.removeAll();
+        jPanel4.setLayout(new BorderLayout());
+        jPanel4.add(ma, BorderLayout.CENTER);
 
+        jPanel6.setVisible(false);
+
+        ma.setVisible(true);
+        ma.revalidate();
+        ma.repaint();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

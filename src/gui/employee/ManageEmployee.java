@@ -370,6 +370,11 @@ public class ManageEmployee extends javax.swing.JPanel {
         jLabel10.setText("Double click on a row to update the address.");
 
         jButton5.setText("View All Employees");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -602,6 +607,11 @@ public class ManageEmployee extends javax.swing.JPanel {
         addEmployeeType.setVisible(true);
 
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        AllEmployee ap = new AllEmployee((Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        ap.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
