@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package gui.admin;
+package gui.signInOptions;
 
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
+import gui.admin.Dashboard;
+import gui.admin.LogInOptions;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import model.MySQL2;
@@ -33,6 +35,8 @@ public class SignInWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,24 +48,43 @@ public class SignInWindow extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/signin (3).png"))); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Poppins Black", 2, 10)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Develop By : ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(15, 15, 15))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(21, 21, 21))
         );
 
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sign In");
+        jLabel1.setText("Super Admin Sign In");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Please Log In to Continue");
@@ -90,17 +113,19 @@ public class SignInWindow extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jButton2.setText("Close");
         jButton2.setOpaque(true);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Poppins Black", 2, 10)); // NOI18N
+        jLabel9.setText("Nisal Sandaru");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,6 +142,15 @@ public class SignInWindow extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +176,9 @@ public class SignInWindow extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -193,11 +229,11 @@ public class SignInWindow extends javax.swing.JFrame {
                 ResultSet resultSet = null;
 
                 if (user == "SuperAdmin") {
-                    resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `email` = '" + email + "' AND `password` = '" + password + "' AND `employee_type_id` = '3' ");
+                    resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `email` = '" + email + "' AND `password` = '" + password + "' AND `employee_type_id` = '3' AND `status_id` = '1' ");
                 } else if (user == "Admin") {
-                    resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `email` = '" + email + "' AND `password` = '" + password + "' AND `employee_type_id` = '1' ");
+                    resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `email` = '" + email + "' AND `password` = '" + password + "' AND `employee_type_id` = '1' AND `status_id` = '1' ");
                 }else if (user == "Emanager") {
-                    resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `email` = '" + email + "' AND `password` = '" + password + "' AND `employee_type_id` = '2' ");
+                    resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `email` = '" + email + "' AND `password` = '" + password + "' AND `employee_type_id` = '2' AND `status_id` = '1' ");
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid mail or password", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
@@ -223,6 +259,14 @@ public class SignInWindow extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        LogInOptions lio = new LogInOptions();
+        lio.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -246,6 +290,9 @@ public class SignInWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

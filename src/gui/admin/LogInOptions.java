@@ -4,6 +4,8 @@
  */
 package gui.admin;
 
+import gui.signInOptions.EquipManSignInWindow;
+import gui.signInOptions.SignInWindow;
 import javax.swing.UIManager;
 
 /**
@@ -123,7 +125,7 @@ public class LogInOptions extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         this.dispose();
-        new SignInWindow("Emanager").setVisible(true);
+        new EquipManSignInWindow("Emanager").setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
