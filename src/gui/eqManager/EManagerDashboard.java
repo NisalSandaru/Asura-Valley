@@ -4,6 +4,9 @@
  */
 package gui.eqManager;
 
+import gui.admin.LogInOptions;
+import gui.manageEquipment.Brand;
+import gui.manageEquipment.EqReportOption;
 import gui.manageEquipment.ManageEquipment;
 import gui.signInOptions.EquipManSignInWindow;
 import java.awt.BorderLayout;
@@ -115,6 +118,11 @@ public class EManagerDashboard extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/icons8-power-30.png"))); // NOI18N
         jButton1.setText("Log Out");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/equipment-30.png"))); // NOI18N
@@ -259,11 +267,39 @@ public class EManagerDashboard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
+        Brand barnd = new Brand();
+        jPanel4.removeAll();
+        jPanel4.setLayout(new BorderLayout());
+        jPanel4.add(barnd, BorderLayout.CENTER);
+
+        jPanel6.setVisible(false);
+        barnd.setVisible(true);
+        barnd.revalidate();
+        barnd.repaint();
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
+        EqReportOption eqOption = new EqReportOption();
+        jPanel4.removeAll();
+        jPanel4.setLayout(new BorderLayout());
+        jPanel4.add(eqOption, BorderLayout.CENTER);
+
+        jPanel6.setVisible(false);
+        eqOption.setVisible(true);
+        eqOption.revalidate();
+        eqOption.repaint();
+        
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        LogInOptions lo = new LogInOptions();
+        lo.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

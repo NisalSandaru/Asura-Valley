@@ -124,10 +124,15 @@ public class AddBrand extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Remove ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("name");
 
-        jButton2.setText("Update");
+        jButton2.setText("Add");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -186,11 +191,8 @@ public class AddBrand extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            int row = jTable1.getSelectedRow();
             String brand = String.valueOf(jComboBox1.getSelectedItem());
-
-            if (row == -1) {
-
+            
                 if (brand.equals("Select")) {
                     JOptionPane.showMessageDialog(this, "Please Select a Brand", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
@@ -209,7 +211,6 @@ public class AddBrand extends javax.swing.JDialog {
                     }
 
                     if (!isFound) {
-                        ResultSet resultSet = MySQL2.executeSearch("SELECT `id` FROM `equipment` WHERE `id` = '" + this.id + "' ");
 
                         MySQL2.executeIUD("INSERT INTO `eqhasbrand` (`equipment_id`, `brand_id`) "
                                 + "VALUES('" + this.id + "', '" + brandMap.get(brand) + "')");
@@ -219,15 +220,35 @@ public class AddBrand extends javax.swing.JDialog {
                     }
                 }
 
-            } else {
-
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        int row = jTable1.getSelectedRow();
+
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Please Select an address to Remove", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            String id = String.valueOf(jTable1.getValueAt(row, 0));
+
+            try {
+                int yOn = JOptionPane.showConfirmDialog(this, "Do you want to remove this brand?", "Warning", JOptionPane.YES_NO_OPTION);
+
+                if(yOn == JOptionPane.YES_OPTION){
+                MySQL2.executeIUD("DELETE FROM `eqhasbrand` WHERE `id` = '"+id+"' ");
+                }
+                loadtable();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
