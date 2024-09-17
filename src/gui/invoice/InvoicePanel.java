@@ -5,7 +5,10 @@
 package gui.invoice;
 
 import java.awt.Frame;
+import java.io.InputStream;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -15,6 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.BookingItems;
 import model.MySQL2;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRTableModelDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class InvoicePanel extends javax.swing.JPanel {
 
@@ -866,8 +873,66 @@ public class InvoicePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
-        
+        try {
+            String bid = jLabel18.getText();
+            String email = jTextField2.getText();
+            String dateTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+            String paidAmound = paymentField.getText();
+            String paymentMethodID = paymentMethodMap.get(String.valueOf(jComboBox1.getSelectedItem()));
+            String discount = String.valueOf(discountField.getText());
+            String invoiceID = null ;
+
+            if (email.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please select Booking.", "Validation Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            } else {
+                try {
+                    MySQL2.executeIUD("UPDATE `bookings` SET `b_status_id`='1' WHERE `id` = '" + bid + "' ");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Update Error.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            
+            if(discount.isEmpty()){
+                discount = "0";
+            }
+            
+            //insert to invoice
+            MySQL2.executeIUD("INSERT INTO `invoice` (`date`, `paid_amount`, `payment_method_id`, `discount`, `bookings_id` ) VALUES ('"+dateTime+"', '"+paidAmound+"', '"+paymentMethodID+"', '"+discount+"', '"+bid+"' )");
+            //insert to invoice
+            ResultSet rs = MySQL2.executeSearch("SELECT `id` FROM `invoice` WHERE `bookings_id`= '"+bid+"'");
+            if(rs.next()){
+                invoiceID = rs.getString("id");
+            }else{
+                JOptionPane.showMessageDialog(this, "Update Error.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            HashMap<String, Object> params = new HashMap<>();
+            params.put("Parameter1", jFormattedTextField2.getText());
+            params.put("Parameter2", discountField.getText());
+            params.put("Parameter3", String.valueOf(jComboBox1.getSelectedItem()));
+            params.put("Parameter4", paymentField.getText());
+            params.put("Parameter5", jFormattedTextField5.getText());
+            
+            params.put("Parameter6", invoiceID);
+            params.put("Parameter7", email);
+            params.put("Parameter8", dateTime);
+            
+            
+            //View or print report
+            InputStream inputSteam = this.getClass().getResourceAsStream("/reports/asuraInvoice.jasper");
+            
+            JRTableModelDataSource dataSource = new JRTableModelDataSource(jTable1.getModel());
+            
+            JasperPrint jasperPrint = JasperFillManager.fillReport(inputSteam, params, dataSource);
+            
+            JasperViewer.viewReport(jasperPrint, false);
+            resetAll();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
 
@@ -920,6 +985,7 @@ public class InvoicePanel extends javax.swing.JPanel {
         jLabel18.setText("BID");
         jTable1.clearSelection();
         jFormattedTextField2.setText("0");
+        paymentField.setText("0");
         calculate();
         loadBookingItems();
         reset();

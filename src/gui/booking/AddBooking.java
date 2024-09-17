@@ -312,6 +312,7 @@ public class AddBooking extends javax.swing.JDialog {
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton7.setText("Cancle");
 
+        jFormattedTextField2.setEditable(false);
         jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -663,7 +664,7 @@ public class AddBooking extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void calculate() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     private void reset() {
@@ -681,6 +682,7 @@ public class AddBooking extends javax.swing.JDialog {
         jTable1.clearSelection();
 
         bookingItemMap.clear();
+        reset();
         loadBookingItems();
     }
 }

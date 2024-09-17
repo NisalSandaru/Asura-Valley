@@ -1,6 +1,5 @@
 package gui.admin;
 
-
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 import gui.activity.ManageActivity;
 import gui.booking.BookingForLocal;
@@ -114,6 +113,11 @@ public class Dashboard extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/icons8-power-30.png"))); // NOI18N
         jButton1.setText("Log Out");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/icons8-customer-30.png"))); // NOI18N
@@ -352,9 +356,24 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         
-        
+        ReportOptions ro = new ReportOptions();
+        jPanel4.removeAll();
+        jPanel4.setLayout(new BorderLayout());
+        jPanel4.add(ro, BorderLayout.CENTER);
+
+        jPanel6.setVisible(false);
+
+        ro.setVisible(true);
+        ro.revalidate();
+        ro.repaint();
         
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        LogInOptions lo = new LogInOptions();
+        lo.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
