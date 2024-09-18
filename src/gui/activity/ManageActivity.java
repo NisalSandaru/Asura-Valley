@@ -16,9 +16,6 @@ import model.MySQL2;
  */
 public class ManageActivity extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ManageActivity
-     */
     public ManageActivity() {
         initComponents();
         loadActivity();

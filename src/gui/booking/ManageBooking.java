@@ -18,15 +18,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.MySQL2;
 
-/**
- *
- * @author User
- */
+
 public class ManageBooking extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ManageBooking
-     */
     public ManageBooking() {
         initComponents();
         loadPenOrders();
@@ -43,12 +37,10 @@ public class ManageBooking extends javax.swing.JPanel {
 
     public void loadPenOrders() {
         try {
-
             ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `bookings` INNER JOIN `customer` ON `customer`.`mobile` = `bookings`.`customer_mobile` WHERE `b_status_id` = '2' ");
 
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-
             while (resultSet.next()) {
                 Vector<String> vector = new Vector<>();
                 vector.add(resultSet.getString("id"));
@@ -58,7 +50,6 @@ public class ManageBooking extends javax.swing.JPanel {
 
                 model.addRow(vector);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +58,6 @@ public class ManageBooking extends javax.swing.JPanel {
     public void loadBookDetails() {
         try {
             int row = jTable1.getSelectedRow();
-
             if (row != -1) {
                 String pid = String.valueOf(jTable1.getValueAt(row, 0));
                 ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `booking_item` INNER JOIN `activity` ON `activity`.`id` = `booking_item`.`activity_id` WHERE `bookings_id` = '" + pid + "' ");
@@ -426,11 +416,9 @@ public class ManageBooking extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
         AddBooking addBooking = new AddBooking((Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
         addBooking.setVisible(true);
         loadPenOrders();
-
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -438,12 +426,9 @@ public class ManageBooking extends javax.swing.JPanel {
         int row = jTable1.getSelectedRow();
         String dateString = String.valueOf(jTable1.getValueAt(row, 3));
 
-        // Define the date format (ensure this matches the format in your table)
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Adjust format as needed
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
         try {
             Date date = sdf.parse(dateString);
-
             jDateChooser1.setDate(date);
             jLabel11.setText(String.valueOf(jTable1.getValueAt(row, 0)));
         } catch (ParseException e) {

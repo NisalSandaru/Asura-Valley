@@ -25,23 +25,18 @@ public class Brand extends javax.swing.JPanel {
     }
 
     private void loadBrands() {
-
         try {
-
             ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `brand` ");
 
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
 
             while (resultSet.next()) {
-
                 Vector<String> vector = new Vector<>();
                 vector.add(resultSet.getString("id"));
                 vector.add(resultSet.getString("name"));
-
                 model.addRow(vector);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -187,38 +182,30 @@ public class Brand extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-            String name = jTextField1.getText();
-            
+            String name = jTextField1.getText();            
                 if (name.isEmpty()) {
                     JOptionPane.showMessageDialog(this, "Please Enter Brand", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
                     boolean isFound = false;
-
                     for (int i = 0; i < jTable1.getRowCount(); i++) {
 
                         String getBrand = String.valueOf(jTable1.getValueAt(i, 1));
-
                         if (getBrand.equals(name)) {
                             JOptionPane.showMessageDialog(this, "Brand already added", "Warning", JOptionPane.WARNING_MESSAGE);
                             isFound = true;
                             break;
                         }
-
                     }
-
                     if (!isFound) {
-
                         MySQL2.executeIUD("INSERT INTO `brand` (`name`) VALUES ('"+name+"') ");
 
                         loadBrands();
                         reset();
                     }
                 }
-
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        
+        }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -226,27 +213,19 @@ public class Brand extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        int row = jTable1.getSelectedRow();
+                int row = jTable1.getSelectedRow();
 
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Please Select Brand to Update", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-
             String id = String.valueOf(jTable1.getValueAt(row, 0));
-
             try {
-
                 String name = jTextField1.getText();
-
                 if (name.isEmpty()) {
                     JOptionPane.showMessageDialog(this, "Please enter Brand Name", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
-
                     boolean isFound = false;
-
                     for (int i = 0; i < jTable1.getRowCount(); i++) {
-
                         String getLine1 = String.valueOf(jTable1.getValueAt(i, 1));
 
                         if (getLine1.equals(name)) {
@@ -263,9 +242,7 @@ public class Brand extends javax.swing.JPanel {
                         loadBrands();
                         reset();
                     }
-
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

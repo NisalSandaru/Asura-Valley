@@ -424,21 +424,16 @@ public class AddBooking extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
         SelectCustomer sc = new SelectCustomer((Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true, this);
         sc.setVisible(true);
-
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
         SelectActivity sa = new SelectActivity((Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true, this);
         sa.setVisible(true);
-
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
         String id = jLabel9.getText();
         String name = jTextField1.getText();
         String price = jFormattedTextField1.getText();
@@ -527,9 +522,9 @@ public class AddBooking extends javax.swing.JDialog {
             Date arrDate = jDateChooser1.getDate();
             Date currentDate = new Date();
             if (arrDate == null) {
-            JOptionPane.showMessageDialog(this, "Please select a valid Arrival Date.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
-            return; // Exit the method if date is null
-        }
+                JOptionPane.showMessageDialog(this, "Please select a valid Arrival Date.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+                return; // Exit the method if date is null
+            }
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String formattedArrDate = sdf.format(arrDate);
 
@@ -537,7 +532,7 @@ public class AddBooking extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Please Select Customer.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             } else if (cusMobile.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please Select Customer.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
-            } else if (arrDate==null) {
+            } else if (arrDate == null) {
                 JOptionPane.showMessageDialog(this, "Please Select Arrival Date.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             } else if (arrDate.before(currentDate)) {
                 JOptionPane.showMessageDialog(this, "Arrival Date cannot be in the past.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
@@ -664,7 +659,7 @@ public class AddBooking extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void calculate() {
-        
+
     }
 
     private void reset() {

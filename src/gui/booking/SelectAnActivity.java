@@ -21,13 +21,10 @@ public class SelectAnActivity extends javax.swing.JDialog {
     }
 
     public void loadActivity() {
-
         try {
             ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `activity`");
-
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-
             while (resultSet.next()) {
                 Vector<String> vector = new Vector<>();
                 vector.add(resultSet.getString("id"));
@@ -35,13 +32,10 @@ public class SelectAnActivity extends javax.swing.JDialog {
                 vector.add(resultSet.getString("price"));
                 model.addRow(vector);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-    
+    }   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -150,20 +144,17 @@ public class SelectAnActivity extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-
-        try {
+       try {
             int row = jTable1.getSelectedRow();
-
             if (row != -1) {
                 String pid = String.valueOf(jTable1.getValueAt(row, 0));
                 ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `activity` WHERE `id` = '" + pid + "' ");
-
                 if (resultSet.next()) {
                     jTextArea1.setText(resultSet.getString("discription"));
-
                     if (evt.getClickCount() == 2) {
                         if (mb != null) {
                             mb.getjTextField1().setText(String.valueOf(jTable1.getValueAt(row, 1)));

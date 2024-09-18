@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package gui.invoice;
 
 import java.awt.Frame;
@@ -32,23 +29,18 @@ public class InvoicePanel extends javax.swing.JPanel {
         initComponents();
         loadPaymentMethods();
     }
-
     public JLabel getjLabel18() {
         return jLabel18;
     }
-
     public JLabel getjLabel9() {
         return jLabel9;
     }
-
     public JTextField getjTextField2() {
         return jTextField2;
     }
-
     public JTextField getjTextField1() {
         return jTextField1;
     }
-
     private double total = 0;
     private double discount = 0;
     private double payment = 0;
@@ -56,7 +48,6 @@ public class InvoicePanel extends javax.swing.JPanel {
     private String paymentMethod = "Select";
 
     private void calculate() {
-
         if (discountField.getText().isEmpty()) {
             discount = 0;
         } else {
@@ -78,13 +69,9 @@ public class InvoicePanel extends javax.swing.JPanel {
                 paymentField.setText("0");
             }
         }
-
         total = Double.parseDouble(jFormattedTextField2.getText());
-
         paymentMethod = String.valueOf(jComboBox1.getSelectedItem());
-
         total -= discount;
-
         if (paymentMethod.equals("Cash")) {
             //cash
             paymentField.setEditable(true);
@@ -104,7 +91,6 @@ public class InvoicePanel extends javax.swing.JPanel {
             paymentField.setEditable(false);
             jButton6.setEnabled(true);
         }
-
         jFormattedTextField5.setText(String.valueOf(balance));
 
     }
@@ -116,15 +102,12 @@ public class InvoicePanel extends javax.swing.JPanel {
             ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `payment_method`");
 
             Vector<String> vector = new Vector<>();
-
             while (resultSet.next()) {
                 vector.add(resultSet.getString("name"));
                 paymentMethodMap.put(resultSet.getString("name"), resultSet.getString("id"));
             }
-
             DefaultComboBoxModel model = new DefaultComboBoxModel(vector);
             jComboBox1.setModel(model);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -23,9 +23,6 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class EqReport extends javax.swing.JDialog {
 
-    /**
-     * Creates new form EqReport
-     */
     public EqReport(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -33,11 +30,8 @@ public class EqReport extends javax.swing.JDialog {
     }
 
     private void loadEquipment() {
-
         try {
-
             ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `equipment` ");
-
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
 
@@ -53,9 +47,7 @@ public class EqReport extends javax.swing.JDialog {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
