@@ -1,5 +1,6 @@
 package gui.superAdmin;
 
+import java.awt.Frame;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -384,8 +385,8 @@ public class Attendance extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-//        AllEmployee ap = new AllEmployee((Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
-//        ap.setVisible(true);
+        AttendanceReport ar = new AttendanceReport((Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        ar.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
